@@ -1,21 +1,33 @@
 package com.example.sample;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class MemberController {
 
-    @RequestMapping("/member")
-    @ResponseBody
-    public String getMember() {
-        return MemberSql.mSql;
+    @Autowired
+    private MemberService memberService;
+
+    @RequestMapping("/member/{id}")
+    public MemberDomain getMember (@PathVariable("id") long id) {
+        return memberService.findone(id);
     }
 
     @RequestMapping("/member/insert")
-    @ResponseBody
-    public String insertMember() {
-        return MemberSql.mInsert;
+    public MemberDomain insertMember() {
+        MemberDomain memberDomain = new MemberDomain();
+        memberDomain.setAge(10);
+        memberDomain.setName("test");
+        memberService.save(memberDomain);
+
+        return memberService.findone(memberDomain.getId());
     }
+
+    @RequestMapping("/member/list/{name}")
+    public List<MemberDomain> getMemberList(@PathVariable("name") String name) { return memberService.findByName(name);}
 }
