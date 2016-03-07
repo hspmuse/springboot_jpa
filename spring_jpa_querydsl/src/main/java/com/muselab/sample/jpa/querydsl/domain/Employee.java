@@ -14,7 +14,7 @@ public class Employee {
 
     private String teamId;
 
-    @ManyToOne
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name="teamId", insertable = false, updatable = false)
     private Team team;
 

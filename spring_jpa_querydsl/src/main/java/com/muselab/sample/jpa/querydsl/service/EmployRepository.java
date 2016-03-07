@@ -3,10 +3,8 @@ package com.muselab.sample.jpa.querydsl.service;
 import com.muselab.sample.jpa.querydsl.domain.Employee;
 import com.muselab.sample.jpa.querydsl.domain.QEmployee;
 import com.mysema.query.jpa.impl.JPAQuery;
-import com.mysema.query.types.Expression;
 import com.mysema.query.types.Predicate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.QueryDslJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
