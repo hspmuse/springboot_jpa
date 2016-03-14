@@ -13,4 +13,8 @@ public class EmployeeService {
     public Employee findById(long id) {
         return employRepository.findById(id);
     }
+
+    public Employee save(Employee employee) { return employRepository.save(employee);}
+
+    public void delete(long id) { employRepository.delete(id);}
 }

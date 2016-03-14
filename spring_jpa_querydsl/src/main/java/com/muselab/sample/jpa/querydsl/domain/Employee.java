@@ -12,9 +12,9 @@ public class Employee {
 
     private String name;
 
-    private String teamId;
+    private long teamId;
 
-    @ManyToOne//(fetch = FetchType.LAZY)
+    @ManyToOne//(cascade = CascadeType.REMOVE)
     @JoinColumn(name="teamId", insertable = false, updatable = false)
     private Team team;
 
@@ -32,6 +32,13 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(long teamId) {
+        this.teamId = teamId;
     }
 
     public Team getTeam() {
