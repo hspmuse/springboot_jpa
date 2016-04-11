@@ -48,4 +48,14 @@ public class Employee {
     public void setTeam(Team team) {
         this.team = team;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+            "empId=" + empId +
+            ", name='" + name + '\'' +
+            ", teamId=" + teamId +
+            ", team=" + team +
+            '}';
+    }
 }

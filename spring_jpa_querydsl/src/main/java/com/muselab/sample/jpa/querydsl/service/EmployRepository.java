@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -18,6 +19,12 @@ public class EmployRepository {
 
     @Autowired
     private EntityManager em;
+
+    public List<Employee> findAll() {
+        JPAQuery query = new JPAQuery(em);
+        QEmployee employee = QEmployee.employee;
+        return query.from(employee).list(employee);
+    }
 
     public Employee findById(long id) {
 
