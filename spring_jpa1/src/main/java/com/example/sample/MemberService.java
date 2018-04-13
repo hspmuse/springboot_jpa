@@ -10,6 +10,8 @@ public class MemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private MemberJtRepository memberJtRepository;
 
     public MemberDomain findone(long id) {
         return memberRepository.findOne(id);
@@ -21,6 +23,10 @@ public class MemberService {
 
     public List<MemberDomain> findByName(String name) {
         return memberRepository.findByName(name);
+    }
+
+    public List<MemberDomain> findByName1(String name) {
+        return memberJtRepository.findByName(name);
     }
 
     public void save(MemberDomain memberDomain) {

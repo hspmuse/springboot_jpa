@@ -1,9 +1,7 @@
 package com.example.sample;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,11 +12,13 @@ public class MemberController {
     private MemberService memberService;
 
     @RequestMapping("/member/{id}")
+    @GetMapping
     public MemberDomain getMember (@PathVariable("id") long id) {
         return memberService.findone(id);
     }
 
     @RequestMapping("/member/insert")
+    @PostMapping
     public MemberDomain insertMember() {
         MemberDomain memberDomain = new MemberDomain();
         memberDomain.setAge(10);
@@ -30,4 +30,7 @@ public class MemberController {
 
     @RequestMapping("/member/list/{name}")
     public List<MemberDomain> getMemberList(@PathVariable("name") String name) { return memberService.findByName(name);}
+
+    @RequestMapping("/member/list1/{name}")
+    public List<MemberDomain> getMemberList1(@PathVariable("name") String name) { return memberService.findByName1(name);}
 }
